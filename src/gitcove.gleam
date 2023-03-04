@@ -8,7 +8,6 @@ pub fn app(url: String) -> String {
   let assert Ok(url) = uri.parse(url)
 
   let html = case uri.path_segments(url.path) {
-    [owner, repo, "tree", ref] -> repo.page(owner, repo, ref, [])
     [owner, repo, "tree", ref, ..path] -> repo.page(owner, repo, ref, path)
     [owner, repo] -> repo.page(owner, repo, "HEAD", [])
     [owner] -> user.page(owner)
