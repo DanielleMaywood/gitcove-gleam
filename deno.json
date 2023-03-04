@@ -1,6 +1,6 @@
 {
   "importMap": "./import_map.json",
   "tasks": {
-    "dev": "deno run -A ./server.js"
+    "dev": "gleam build && deno run -A ./server.js"
   }
 }
