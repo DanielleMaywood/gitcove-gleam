@@ -1,7 +1,5 @@
 import gleam/list
 import nakai/html.{Node}
-import nakai/html/attrs.{Attr}
-import gitcove/utilities/nakai.{with_list}
 import gitcove/utilities/nakai/node
 import gitcove/utilities/nakai/with
 import gitcove/utilities.{cond}
@@ -10,8 +8,7 @@ pub type Crumb {
   Crumb(name: String, link: String)
 }
 
-pub fn breadcrumb(attrs: List(Attr(a)), crumbs: List(Crumb)) -> Node(a) {
-  use <- with_list(attrs)
+pub fn breadcrumb(crumbs: List(Crumb)) -> Node(a) {
   use <- with.class("flex flex-row gap-1")
 
   node.div({

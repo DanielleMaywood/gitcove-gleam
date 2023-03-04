@@ -1,13 +1,12 @@
 import gleam/list
 import gleam/string
 import nakai/html.{Node}
-import nakai/html/attrs
 import gitcove/templates/base
 import gitcove/components/blob_view.{blob_view}
 import gitcove/components/tree_view.{tree_view}
 import gitcove/components/breadcrumb.{Crumb, breadcrumb}
 import gitcove/utilities/git
-import gitcove/utilities/nakai.{with}
+import gitcove/utilities/nakai/with
 import gitcove/utilities/nakai/node
 
 pub fn page(
@@ -38,9 +37,9 @@ pub fn page(
 
   base.document([
     {
-      use <- with(attrs.class("flex flex-col gap-2"))
+      use <- with.class("flex flex-col gap-2")
 
-      node.div([breadcrumb([], crumbs), git_object(owner, repo, ref, path)])
+      node.div([breadcrumb(crumbs), git_object(owner, repo, ref, path)])
     },
   ])
 }
