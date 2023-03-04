@@ -1,0 +1,9 @@
+name = "gitcove"
+version = "0.1.0"
+description = "A Gleam project"
+target = "javascript"
+
+[dependencies]
+gleam_stdlib = "~> 0.27"
+nakai = "~> 0.4"
+shellout = "~> 1.2"
