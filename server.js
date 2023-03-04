@@ -4,6 +4,8 @@ import { setup } from "twind";
 import { getStyleTag, shim, virtualSheet } from "twind/shim/server";
 import { app } from "./build/dev/javascript/gitcove/gitcove.mjs";
 
+import "std/dotenv/load.ts";
+
 const sheet = virtualSheet();
 setup({
   theme: {

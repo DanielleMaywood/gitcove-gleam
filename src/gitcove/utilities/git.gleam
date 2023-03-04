@@ -3,6 +3,7 @@ import gleam/bool
 import gleam/list
 import gleam/string
 import shellout
+import gitcove/utilities/env
 
 pub type TreeEntry {
   Commit(name: String, hash: String)
@@ -16,6 +17,8 @@ pub fn cat_file(
   ref ref: String,
   path path: List(String),
 ) -> String {
+  let git_repos_path = env.get("GITCOVE_REPOS_PATH")
+
   let assert Ok(data) =
     shellout.command(
       run: "/usr/bin/git",
@@ -24,7 +27,7 @@ pub fn cat_file(
         "--textconv",
         ref <> ":" <> string.join(path, with: "/"),
       ],
-      in: "/Users/dan/.repos/" <> owner <> "/" <> repo <> ".git",
+      in: git_repos_path <> "/" <> owner <> "/" <> repo <> ".git",
       opt: [],
     )
 
@@ -37,11 +40,13 @@ pub fn get_type(
   ref ref: String,
   path path: List(String),
 ) -> String {
+  let git_repos_path = env.get("GITCOVE_REPOS_PATH")
+
   let assert Ok(kind) =
     shellout.command(
       run: "/usr/bin/git",
       with: ["cat-file", "-t", ref <> ":" <> string.join(path, with: "/")],
-      in: "/Users/dan/.repos/" <> owner <> "/" <> repo <> ".git",
+      in: git_repos_path <> "/" <> owner <> "/" <> repo <> ".git",
       opt: [],
     )
 
@@ -54,11 +59,13 @@ pub fn ls_tree(
   ref ref: String,
   path path: List(String),
 ) -> List(TreeEntry) {
+  let git_repos_path = env.get("GITCOVE_REPOS_PATH")
+
   let assert Ok(tree) =
     shellout.command(
       run: "/usr/bin/git",
       with: ["ls-tree", "-l", ref, "./" <> string.join(path, with: "/") <> "/"],
-      in: "/Users/dan/.repos/" <> owner <> "/" <> repo <> ".git",
+      in: git_repos_path <> "/" <> owner <> "/" <> repo <> ".git",
       opt: [],
     )
 
