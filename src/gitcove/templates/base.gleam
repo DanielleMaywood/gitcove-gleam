@@ -4,7 +4,11 @@ import gitcove/components/header.{header}
 
 pub fn document(children: List(Node(a))) -> Node(a) {
   html.Fragment([
-    html.head([html.meta([attrs.name("twind")])]),
+    html.head([
+      // * The produced meta tag is used to insert twind's
+      // * style tag.
+      html.meta([attrs.name("twind")]),
+    ]),
     html.body(
       [],
       [
