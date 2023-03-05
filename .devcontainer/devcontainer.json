@@ -1,0 +1,9 @@
+{
+	"name": "Gleam",
+	"build": { "dockerfile": "Dockerfile" },
+	"customizations": {
+		"vscode": {
+			"extensions": ["Gleam.gleam"]
+		}
+	}
+}
